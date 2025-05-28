@@ -17,6 +17,7 @@ import data from "../data/portfolio.json";
 export default function Home() {
   // Ref
   const workRef = useRef();
+  const profilePhotoRef = useRef();
   const aboutRef = useRef();
   const textOne = useRef();
   const textTwo = useRef();
@@ -42,8 +43,14 @@ export default function Home() {
 
   useIsomorphicLayoutEffect(() => {
     stagger(
-      [textOne.current, textTwo.current, textThree.current, textFour.current],
-      { y: 40, x: -10, transform: "scale(0.95) skew(10deg)" },
+      [
+        profilePhotoRef.current,
+        textOne.current,
+        textTwo.current,
+        textThree.current,
+        textFour.current,
+      ],
+      { y: 40, x: -10, transform: "scale(0.95) skew(10deg)", delay: "500ms" },
       { y: 0, x: 0, transform: "scale(1)" }
     );
   }, []);
@@ -68,6 +75,7 @@ export default function Home() {
             <img
               src="/images/synthewave_syah.jpg"
               className={"h-52 w-52 rounded-full"}
+              ref={profilePhotoRef}
             />
             <div className="mt-5">
               <h1
@@ -115,7 +123,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-4 laptop:mx-4 bg-gradient-to-tr from-red-100 to-orange-50 rounded-xl shadow-xl">
+        <div className="mt-10 laptop:mt-30 p-2 laptop:p-4 laptop:mx-4 bg-gradient-to-tr dark:bg-none dark:bg-gray-900 from-red-100 to-orange-50 rounded-xl shadow-xl">
           <h1 className="tablet:m-10 text-2xl text-bold">Services.</h1>
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
             {data.services.map((service, index) => (
