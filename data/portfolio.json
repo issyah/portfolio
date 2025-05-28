@@ -1,0 +1,115 @@
+{
+  "name": "Issyah Ismail",
+  "headerTaglineOne": "Is'syah Ismail",
+  "headerTaglineTwo": "React, Nextjs & ",
+  "headerTaglineThree": "Shopify developer",
+  "headerTaglineFour": "based in Singapore",
+  "showCursor": true,
+  "showBlog": false,
+  "darkMode": true,
+  "showResume": false,
+  "socials": [
+    { "id": "1", "title": "Github", "link": "https://github.com/issyah" },
+    {
+      "id": "2",
+      "title": "LinkedIn",
+      "link": "https://www.linkedin.com/in/issyahismail/"
+    },
+    { "id": "5", "title": "Email", "link": "mailto:issyah89@gmail.com" }
+  ],
+  "projects": [
+    {
+      "id": "9",
+      "title": "Solulu Closet",
+      "description": "Web design mockup & development. From Figma mockup to custom shopify liquid template.",
+      "imageSrc": "/images/solulu-closet.jpg",
+      "url": "https://solulu-closet.com"
+    },
+    {
+      "id": "7",
+      "title": "Mal's Market",
+      "description": "Web design mockup & development. From Figma mockup to custom shopify liquid template.",
+      "imageSrc": "/images/malsmarket.jpg",
+      "url": "https://malsmarket.com"
+    },
+    {
+      "id": "69b96b4e-ce13-4687-ab2f-f25e04d5d18e",
+      "title": "Shortcutx",
+      "description": "Web design & development. Custom shopify liquid template.",
+      "imageSrc": "/images/shortcutx.jpg",
+      "url": "https://shortcutx.co"
+    },
+    {
+      "id": "4",
+      "title": "Naezily",
+      "description": "Website Development. Built on shopify's dawn template. ",
+      "imageSrc": "/images/naezily.jpg",
+      "url": "https://naezily.com"
+    },
+    {
+      "id": "5",
+      "title": "Suzuki Motorcycle Singapore ",
+      "description": "Website Design & Development. Built on Nextjs, Material UI and deployed on Vercel",
+      "imageSrc": "/images/suzuki_website.webp",
+      "url": "https://suzukisingapore.com.sg"
+    },
+    {
+      "id": "6",
+      "title": "Polycourses",
+      "description": "Experimental web app using data.gov.sg API. Built on Nuxtjs, Tailwind CSS and D3.js",
+      "imageSrc": "/images/polycourses.jpeg",
+      "url": "https://sg.polycourses.com"
+    }
+  ],
+  "services": [
+    {
+      "id": "1",
+      "title": "🧑‍💻 Web Development",
+      "description": "I build fast, responsive websites and web apps using Next.js, React, or Shopify Liquid—tailored to your brand and optimized for performance, SEO, and scalability."
+    },
+    {
+      "id": "2",
+      "title": "🎨 Web Design Mockups",
+      "description": "I create clean, conversion-focused mockups in Figma, helping you visualize your site before development. Each layout is designed for clarity, usability, and impact."
+    },
+    {
+      "id": "3",
+      "title": "🔄 Web Maintenance & Updates",
+      "description": "From Shopify app integrations to content updates and performance tweaks, I provide reliable ongoing support to keep your site running smoothly and looking sharp."
+    },
+    {
+      "id": "4",
+      "title": "💬 Consultation Services",
+      "description": "Need guidance on your web project? I offer 1:1 consultations on tech stack choices, UI/UX direction, Shopify strategy, or development workflows—tailored to your goals and challenges."
+    }
+  ],
+  "aboutpara": "Hi, I'm Issyah Ismail—a UI/UX Front-End Developer based in Singapore. I’ve been crafting digital experiences at SendForensics for the past 10 years, blending clean design with performant, maintainable code.\n\nI specialize in building responsive, intuitive interfaces using:\n\n- React & Next.js – for fast, modern web apps\n- Tailwind CSS & Material UI – to create scalable, consistent design systems\n- Shopify Liquid – customizing powerful e-commerce storefronts\n- UI/UX Design – focusing on clarity, usability, and simplicity\n- Data Visualization – translating complexity into clarity\n\nI care deeply about the little things—making sure every interaction feels right, every layout is responsive, and every product feels like it was built with intention.\n\nWhen I’m not writing code, I’m probably immersed in Warhammer 40K lore or gearing up for a Space Marine 2 session. I also enjoy 80s Synthwave, indie side projects, and helping small brands bring their ideas to life online.\n\nWant to work together or just talk shop (or boltguns)? Let’s connect.",
+  "resume": {
+    "tagline": "👋  I'm a software engineer, product designer.",
+    "description": "I have delivered world-class user experiences to millions of people. Well-versed with React, Javascript, and most of the Web frameworks.",
+    "experiences": [
+      {
+        "id": "1",
+        "dates": "March 2022 - Present",
+        "type": "Full Time",
+        "position": "Frontend Engineer at X",
+        "bullets": "Bullet One, Bullet Two"
+      },
+      {
+        "id": "d495c23b-4f65-479a-9b8a-cfbc1c089725",
+        "dates": "July 2020 - March 2022",
+        "type": "Full Time",
+        "position": "Frontend Engineer at X",
+        "bullets": "Worked on the frontend of a React application, Worked on the frontend of a React application"
+      }
+    ],
+    "education": {
+      "universityName": "University X",
+      "universityDate": "2016-2020",
+      "universityPara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    "languages": ["Javascript", "HTML5", "CSS", "PHP"],
+    "frameworks": ["React", "Nodejs", "Nextjs"],
+    "others": ["Figma", "Cypress", "Adobe"]
+  }
+}
