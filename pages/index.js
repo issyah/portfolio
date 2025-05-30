@@ -10,9 +10,13 @@ import Head from "next/head";
 import Button from "../components/Button";
 import Link from "next/link";
 import Cursor from "../components/Cursor";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // Local Data
 import data from "../data/portfolio.json";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   // Ref
@@ -23,7 +27,8 @@ export default function Home() {
   const textTwo = useRef();
   const textThree = useRef();
   const textFour = useRef();
-
+  const workCardContainer = useRef();
+  const serviceContainer = useRef();
   // Handling Scroll
   const handleWorkScroll = () => {
     window.scrollTo({
@@ -40,8 +45,22 @@ export default function Home() {
       behavior: "smooth",
     });
   };
-
-  useIsomorphicLayoutEffect(() => {
+  useGSAP(() => {
+    const workCard = gsap.utils.toArray(".work-card");
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: workCardContainer.current,
+        scrub: true,
+        pin: true,
+      },
+    });
+    timeline.from(workCard, {
+      y: 500,
+      opacity: 0,
+      scale: 2,
+      stagger: 0.2,
+      duration: 1,
+    });
     stagger(
       [
         profilePhotoRef.current,
@@ -53,6 +72,38 @@ export default function Home() {
       { y: 40, x: -10, transform: "scale(0.95) skew(10deg)", delay: "500ms" },
       { y: 0, x: 0, transform: "scale(1)" }
     );
+
+    const timeline2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: serviceContainer.current,
+        scrub: true,
+        pin: true,
+        start: "top 120px",
+      },
+    });
+    const serviceCard = gsap.utils.toArray(".service-card");
+
+    timeline2
+      .to(".services-background-wrapper", {
+        borderRadius: 16,
+        width: "100%",
+        height: "100%",
+        duration: 20,
+        left: 0,
+        top: 0,
+        bottom: 0,
+      })
+      .from(".services-title", {
+        opacity: 0,
+        y: -40,
+        duration: 20,
+      });
+    timeline2.from(serviceCard, {
+      opacity: 0,
+      x: 0,
+      stagger: 0.2,
+      duration: 20,
+    });
   }, []);
 
   return (
@@ -110,7 +161,10 @@ export default function Home() {
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
           <h3 className="text-2xl text-bold">Work.</h3>
 
-          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-2 gap-4">
+          <div
+            ref={workCardContainer}
+            className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-2 desktop:grid-cols-3 gap-4"
+          >
             {data.projects.map((project) => (
               <WorkCard
                 key={project.id}
@@ -123,16 +177,24 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-4 laptop:mx-4 bg-gradient-to-tr dark:bg-none dark:bg-gray-900 from-red-100 to-orange-50 rounded-xl shadow-xl">
-          <h1 className="tablet:m-10 text-2xl text-bold">Services.</h1>
-          <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
-            {data.services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                name={service.title}
-                description={service.description}
-              />
-            ))}
+        <div
+          className="mt-10 laptop:mt-30 p-2 laptop:p-4 relative"
+          ref={serviceContainer}
+        >
+          <div className="rounded-lg absolute h-2 w-2 bg-gradient-to-tr dark:bg-none dark:bg-gray-900 from-red-100 to-orange-50 services-background-wrapper top-1/2 left-1/2"></div>
+          <div className="relative">
+            <h1 className="tablet:m-10 text-2xl text-bold services-title">
+              Services.
+            </h1>
+            <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
+              {data.services.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  name={service.title}
+                  description={service.description}
+                />
+              ))}
+            </div>
           </div>
         </div>
         {/* This button should not go into production */}
