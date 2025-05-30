@@ -51,13 +51,11 @@ export default function Home() {
       scrollTrigger: {
         trigger: workCardContainer.current,
         scrub: true,
-        pin: true,
       },
     });
     timeline.from(workCard, {
-      y: 500,
+      y: 180,
       opacity: 0,
-      scale: 2,
       stagger: 0.2,
       duration: 1,
     });
