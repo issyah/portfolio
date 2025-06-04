@@ -2,11 +2,12 @@ import React from "react";
 import { useTheme } from "next-themes";
 import data from "../../data/portfolio.json";
 
-const Button = ({ children, type, onClick, classes }) => {
+const Button = ({ children, type, onClick, classes, ...otherProps }) => {
   const { theme } = useTheme();
   if (type === "primary") {
     return (
       <button
+        {...otherProps}
         onClick={onClick}
         type="button"
         className={`text-sm tablet:text-base p-4 laptop:p-2 m-1 laptop:m-2 rounded-lg ${

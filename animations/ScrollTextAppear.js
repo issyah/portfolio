@@ -16,6 +16,9 @@ const ScrollTextAppear = ({ children, classsName }) => {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
+          toggleActions: "play pause pause reverse",
+          // markers: true,
+          start: "top center",
         },
       });
 

@@ -51,10 +51,13 @@ export default function Home() {
       scrollTrigger: {
         trigger: workCardContainer.current,
         scrub: true,
+        // markers: true,
+        end: "bottom center",
       },
     });
     timeline.from(workCard, {
       y: 240,
+      opacity: 0,
       stagger: 0.1,
       pin: true,
       duration: 1,
@@ -73,10 +76,10 @@ export default function Home() {
 
     const timeline2 = gsap.timeline({
       scrollTrigger: {
-        trigger: ".service-card",
+        trigger: serviceContainer.current,
         scrub: true,
-        markers: true,
         end: "bottom center",
+        // markers: true,
       },
     });
     const serviceCard = gsap.utils.toArray(".service-card");
@@ -175,8 +178,11 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 laptop:mt-30 relative" ref={serviceContainer}>
-          <div className="rounded-full absolute h-2 w-2 bg-gradient-to-tr dark:bg-none dark:bg-gray-900 from-red-100 to-orange-50 services-background-wrapper top-1/2 left-1/2"></div>
+        <div
+          className="mt-10 laptop:mt-30 relative overflow-x-hidden -mx-4 desktop:-mx-16"
+          ref={serviceContainer}
+        >
+          <div className="rounded-full absolute h-2 w-2 bg-gradient-to-tr dark:bg-none dark:bg-gray-900 from-teal-200 services-background-wrapper top-1/2 left-1/2"></div>
           <div className="p-2">
             <div className="relative">
               <h1 className="tablet:m-10 text-2xl text-bold services-title">
@@ -211,11 +217,11 @@ export default function Home() {
                 Singapore. For the past{" "}
                 <span className="font-bold">10 years</span> at SendForensics,
                 I’ve been building robust, high-performing web applications that
-                scale, perform, and deliver smooth user experiences.s
+                scale, perform, and deliver smooth user experiences.
+                <p>My current tech stack includes:</p>
               </div>
             </ScrollTextAppear>
-            <div>
-              <p>My current tech stack includes:</p>
+            <ScrollTextAppear>
               <ul className="list-disc mb-10">
                 <li className="ml-10 my-2">
                   <span className="font-bold">React & Next.js</span> – for
@@ -242,21 +248,24 @@ export default function Home() {
                   setting up CI/CD pipelines and automated deployments
                 </li>
               </ul>
-            </div>
-
-            <p className="mb-10">
-              I focus on maintainable front-end architecture, performance, and
-              clean code—shipping features that work reliably across devices and
-              browsers.
-            </p>
-            <p>
-              When I’m off the clock, I’m usually deep in{" "}
-              <span className="font-bold">Warhammer 40K lore</span>, blasting
-              through <span className="font-bold">Space Marine 2</span>, or
-              vibing to <span className="font-bold">80s Synthwave</span>. I also
-              enjoy building side projects and helping small brands come to life
-              online.
-            </p>
+            </ScrollTextAppear>
+            <ScrollTextAppear classsName={"mb-10"}>
+              <p>
+                I focus on maintainable front-end architecture, performance, and
+                clean code—shipping features that work reliably across devices
+                and browsers.
+              </p>
+            </ScrollTextAppear>
+            <ScrollTextAppear>
+              <p>
+                When I’m off the clock, I’m usually deep in{" "}
+                <span className="font-bold">Warhammer 40K lore</span>, blasting
+                through <span className="font-bold">Space Marine 2</span>, or
+                vibing to <span className="font-bold">80s Synthwave</span>. I
+                also enjoy building side projects and helping small brands come
+                to life online.
+              </p>
+            </ScrollTextAppear>
           </div>
         </div>
         <Footer />

@@ -15,7 +15,7 @@ const WorkCard = ({ img, name, description, onClick }) => {
             height: "240px",
           }}
         ></img>
-        <h3 className="z-10 tlr mt-5 laptop:opacity-0 laptop:mt-0 laptop:flex laptop:justify-center laptop:items-center laptop:inset-0 laptop:opacity-1  text-2xl font-bold work-card-name laptop:absolute relative group-hover:opacity-100 transition-all ease-in-out duration-300">
+        <h3 className="z-10 p-4 laptop:p-0 laptop:opacity-0 laptop:mt-0 laptop:flex laptop:justify-center laptop:items-center laptop:inset-0 laptop:opacity-1 laptop:text-white  text-xl laptop:text-2xl font-bold work-card-name laptop:absolute relative group-hover:opacity-100 transition-all ease-in-out duration-300">
           {name ? name : "Project Name"}
         </h3>
       </div>
