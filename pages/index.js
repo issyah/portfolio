@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Header from "../components/Header";
 import ServiceCard from "../components/ServiceCard";
 import Socials from "../components/Socials";
@@ -11,13 +11,13 @@ import Button from "../components/Button";
 import Link from "next/link";
 import Cursor from "../components/Cursor";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import SplitText from "gsap/dist/SplitText";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
 // Local Data
 import data from "../data/portfolio.json";
-gsap.registerPlugin(ScrollTrigger);
-
+import ScrollTextAppear from "../animations/ScrollTextAppear";
+gsap.registerPlugin(ScrollTrigger, SplitText);
 export default function Home() {
   // Ref
   const workRef = useRef();
@@ -54,9 +54,9 @@ export default function Home() {
       },
     });
     timeline.from(workCard, {
-      y: 180,
-      opacity: 0,
-      stagger: 0.2,
+      y: 240,
+      stagger: 0.1,
+      pin: true,
       duration: 1,
     });
     stagger(
@@ -73,36 +73,36 @@ export default function Home() {
 
     const timeline2 = gsap.timeline({
       scrollTrigger: {
-        trigger: serviceContainer.current,
+        trigger: ".service-card",
         scrub: true,
-        pin: true,
-        start: "top 120px",
+        markers: true,
+        end: "bottom center",
       },
     });
     const serviceCard = gsap.utils.toArray(".service-card");
 
     timeline2
       .to(".services-background-wrapper", {
-        borderRadius: 16,
-        width: "100%",
         height: "100%",
-        duration: 20,
-        left: 0,
+        width: "4000px",
+        borderRadius: 0,
+        duration: 5,
+        left: "-4rem",
         top: 0,
         bottom: 0,
       })
       .from(".services-title", {
         opacity: 0,
         y: -40,
-        duration: 20,
+        duration: 5,
       });
     timeline2.from(serviceCard, {
       opacity: 0,
       x: 0,
-      stagger: 0.2,
-      duration: 20,
+      stagger: 0.5,
+      duration: 5,
     });
-  }, []);
+  });
 
   return (
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
@@ -175,23 +175,22 @@ export default function Home() {
           </div>
         </div>
 
-        <div
-          className="mt-10 laptop:mt-30 p-2 laptop:p-4 relative"
-          ref={serviceContainer}
-        >
-          <div className="rounded-lg absolute h-2 w-2 bg-gradient-to-tr dark:bg-none dark:bg-gray-900 from-red-100 to-orange-50 services-background-wrapper top-1/2 left-1/2"></div>
-          <div className="relative">
-            <h1 className="tablet:m-10 text-2xl text-bold services-title">
-              Services.
-            </h1>
-            <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
-              {data.services.map((service, index) => (
-                <ServiceCard
-                  key={index}
-                  name={service.title}
-                  description={service.description}
-                />
-              ))}
+        <div className="mt-10 laptop:mt-30 relative" ref={serviceContainer}>
+          <div className="rounded-full absolute h-2 w-2 bg-gradient-to-tr dark:bg-none dark:bg-gray-900 from-red-100 to-orange-50 services-background-wrapper top-1/2 left-1/2"></div>
+          <div className="p-2">
+            <div className="relative">
+              <h1 className="tablet:m-10 text-2xl text-bold services-title">
+                Services.
+              </h1>
+              <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
+                {data.services.map((service, index) => (
+                  <ServiceCard
+                    key={index}
+                    name={service.title}
+                    description={service.description}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -206,41 +205,45 @@ export default function Home() {
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
           <h1 className="tablet:m-10 text-2xl text-bold">About.</h1>
           <div className="text-xl laptop:text-3xl w-full laptop:w-3/5 tablet:m-10 mt-2">
-            <p className="mb-10">
-              {/* {data.aboutpara} */}
-              Hi, I'm Issyah Ismail — a Front-End Developer based in Singapore.
-              For the past <span className="font-bold">10 years</span> at
-              SendForensics, I’ve been building robust, high-performing web
-              applications that scale, perform, and deliver smooth user
-              experiences.
-            </p>
-            <p>My current tech stack includes:</p>
-            <ul className="list-disc mb-10">
-              <li className="ml-10 my-2">
-                <span className="font-bold">React & Next.js</span> – for
-                building fast, modern web apps
-              </li>
-              <li className="ml-10 my-2">
-                <span className="font-bold">Tailwind CSS & Material UI</span> –
-                for efficient, consistent styling
-              </li>
-              <li className="ml-10 my-2">
-                <span className="font-bold">Shopify Liquid</span> – for building
-                and customizing e-commerce storefronts
-              </li>
-              <li className="ml-10 my-2">
-                <span className="font-bold">Highcharts & D3.js</span> – making
-                complex datasets actionable and understandable
-              </li>
-              <li className="ml-10 my-2">
-                <span className="font-bold">Cypress</span> – for writing
-                end-to-end integration tests
-              </li>
-              <li className="ml-10 my-2">
-                <span className="font-bold">GitHub Actions </span> – for setting
-                up CI/CD pipelines and automated deployments
-              </li>
-            </ul>
+            <ScrollTextAppear classsName={"mb-10"}>
+              <div>
+                Hi, I'm Issyah Ismail — a Front-End Developer based in
+                Singapore. For the past{" "}
+                <span className="font-bold">10 years</span> at SendForensics,
+                I’ve been building robust, high-performing web applications that
+                scale, perform, and deliver smooth user experiences.s
+              </div>
+            </ScrollTextAppear>
+            <div>
+              <p>My current tech stack includes:</p>
+              <ul className="list-disc mb-10">
+                <li className="ml-10 my-2">
+                  <span className="font-bold">React & Next.js</span> – for
+                  building fast, modern web apps
+                </li>
+                <li className="ml-10 my-2">
+                  <span className="font-bold">Tailwind CSS & Material UI</span>{" "}
+                  – for efficient, consistent styling
+                </li>
+                <li className="ml-10 my-2">
+                  <span className="font-bold">Shopify Liquid</span> – for
+                  building and customizing e-commerce storefronts
+                </li>
+                <li className="ml-10 my-2">
+                  <span className="font-bold">Highcharts & D3.js</span> – making
+                  complex datasets actionable and understandable
+                </li>
+                <li className="ml-10 my-2">
+                  <span className="font-bold">Cypress</span> – for writing
+                  end-to-end integration tests
+                </li>
+                <li className="ml-10 my-2">
+                  <span className="font-bold">GitHub Actions </span> – for
+                  setting up CI/CD pipelines and automated deployments
+                </li>
+              </ul>
+            </div>
+
             <p className="mb-10">
               I focus on maintainable front-end architecture, performance, and
               clean code—shipping features that work reliably across devices and
